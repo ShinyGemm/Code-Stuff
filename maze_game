@@ -1,0 +1,64 @@
+import pygame
+import sys
+
+pygame.font.init()
+pygame.init()
+
+screen = pygame.display.set_mode((800,600))
+#background = pygame.image.load("Stone_BG.webp")
+#backgroundfinal = pygame.transform.scale(background, (800,600))
+
+
+
+fps = pygame.time.Clock()
+def Game():
+    running = True
+    initx = 100
+    inity = 50
+    guy = pygame.Rect(initx, inity, 25 ,25)
+
+    swordSwung = []
+
+
+    ###################
+
+    while (running):
+        fps.tick(60)
+        for event in pygame.event.get():
+        
+            if (event.type==pygame.QUIT):
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_e:
+                    swordRight = pygame.Rect(guy.x+12.5, guy.y+12.5, 10, 8)
+                    swordSwung.append(swordRight)
+                if event.key==pygame.K_q:
+                    swordLeft = pygame.Rect(guy.x-12.5, guy.y+12.5, 10, 8)
+                    swordSwung.append(swordLeft)
+
+        keyPressed = pygame.key.get_pressed()
+        # playerGuy = pygame.draw.rect(screen, (255,0,0), (initx,inity,25,25)) 
+        
+        # screen.blit(playerGuy)
+        #screen.blit(backgroundfinal,(0,0))
+        pygame.draw.rect(screen, (255,0,0), (guy.x,guy.y,25,25)) 
+        PlayerMovement(keyPressed, guy)
+        
+        pygame.display.update() 
+
+
+def PlayerMovement(keyPressed, guy):
+   
+   if keyPressed[pygame.K_d]:
+      guy.x = guy.x + 2.75
+      return guy.x
+   if keyPressed[pygame.K_a]:
+       guy.x = guy.x - 2.75
+   if keyPressed[pygame.K_w]:
+       guy.y = guy.y - 2.75
+   if keyPressed[pygame.K_s]:
+       guy.y = guy.y + 2.75
+
+def SwordFunction(sword):
+    for swordRight in sword
