@@ -5,9 +5,9 @@ pygame.font.init()
 pygame.init()
 
 screen = pygame.display.set_mode((800,600))
-#background = pygame.image.load("Stone_BG.webp")
-#backgroundfinal = pygame.transform.scale(background, (800,600))
-
+#background = pygame.image.load("Stone_BG.webp") 
+#backgroundfinal = pygame.transform.scale(background, (800,600)) 
+#I've removed the background, so itll probably just appear as a black screen if you were to run this
 
 
 fps = pygame.time.Clock()
